@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import rasterio as rio
-# import earthpy.plot as ep
+import earthpy.plot as ep
 import numpy.ma as ma
 import numpy as np
 

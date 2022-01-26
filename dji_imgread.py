@@ -24,4 +24,4 @@ ax.set(title="12/14 - dji")
 ax.set_axis_off()
 plt.show()
 
-np.savetxt("thermap.txt", thermal_np)
+# np.savetxt("thermap.txt", thermal_np)
