@@ -21,15 +21,15 @@ def read_image(image_path):
 
     # thermal_np = image.thermal_np           # The temperature matrix as a np array
     raw_sensor_np = image.raw_sensor_np     # The raw thermal sensor excitation values # as a np array
-    # meta = image.meta                     # Image metadata
+    meta = image.meta                     # Image metadata
 
-    return normalize_data(raw_sensor_np)
+    return normalize_data(raw_sensor_np), meta
 
 
 def main():
 
     # import and process drone image
-    dji_img_sample = read_image("img/DJI_0354.JPG")
+    dji_img_sample, meta = read_image("img/DJI_0354.JPG")
 
     # plot the image
     fig, ax = plt.subplots(figsize=(10, 8))
@@ -40,4 +40,4 @@ def main():
     plt.show()
 
 
-main ()
+# main ()
