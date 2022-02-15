@@ -11,26 +11,21 @@ from skimage.metrics import structural_similarity as ssim
 import cv2
 
 
+
 def compare_images(landsat, drone):
-    # lsat = np.histogram(landsat, bins=50, range=None, normed=None, weights=None, density=None)
-    drone = np.histogram(drone, bins='auto')
+    # drone = np.histogram(, bins='auto')
+    # plt.style.use('seaborn-deep')
     plt.figure()
     plt.title("Grayscale Histogram")
     plt.xlabel("Bins")
     plt.ylabel("# of Pixels")
-    plt.plot(drone)
-    plt.xlim([0, 256])
-    # normalize the histogram
-    drone /= drone.sum()
-
-    # plot the normalized histogram
-    plt.figure()
-    plt.title("Grayscale Histogram (Normalized)")
-    plt.xlabel("Bins")
-    plt.ylabel("% of Pixels")
-    plt.plot(drone)
-    plt.xlim([0, 256])
+    bins = np.linspace(0, 1,10)
+    plt.hist(landsat, bins, label='landsat', color="blue")
+    plt.hist(drone, bins, label='drone', color="green")
+    plt.legend(loc='upper right')
+    # plt.xlim([0, 1])
     plt.show()
+
 
 def main():
     # Reading both images
