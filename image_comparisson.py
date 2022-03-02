@@ -1,29 +1,22 @@
 from lsat_imgread import import_image
 from dji_imgread import read_image
 import matplotlib.pyplot as plt
-import numpy.ma as ma
 import numpy as np
-import earthpy.plot as ep
-from PIL import Image
-from PIL.ExifTags import TAGS
-# from libxmp import XMPFiles, consts
-from skimage.metrics import structural_similarity as ssim
-import cv2
-
+from mycolorpy import colorlist as mcp
 
 
 def compare_images(landsat, drone):
-    # drone = np.histogram(, bins='auto')
-    # plt.style.use('seaborn-deep')
     plt.figure()
-    plt.title("Grayscale Histogram")
+    plt.title("Histogram Comparisson")
     plt.xlabel("Bins")
     plt.ylabel("# of Pixels")
-    bins = np.linspace(0, 1,10)
-    plt.hist(landsat, bins, label='landsat', color="blue")
-    plt.hist(drone, bins, label='drone', color="green")
+    bins = np.linspace(0, 1, 10)
+    plt.subplot(1, 2, 1)
+    plt.hist(landsat, bins, label='landsat', color=mcp.gen_color(cmap="Blues", n=landsat.shape[1]))
     plt.legend(loc='upper right')
-    # plt.xlim([0, 1])
+    plt.subplot(1, 2, 2)
+    plt.hist(drone, bins, label='drone', color=mcp.gen_color(cmap="Greens", n=drone.shape[1]))
+    plt.legend(loc='upper right')
     plt.show()
 
 
