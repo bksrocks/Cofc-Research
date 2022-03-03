@@ -23,13 +23,13 @@ def import_image(image_path, band):
         # rotating image
         image_array = rotate_image(image)
 
-    # converting temperatures from Kelvin to Celcius
-    # if band == 10:
-    #     image_array = (1321.0789 / np.log((774.8853 / (3.3420E-04 * image_array + 0.10000)) + 1)) - 273.15
-    # elif band == 11:
-    #     image_array = (1201.1442 / np.log((480.8883 / (3.3420E-04 * image_array + 0.10000)) + 1))
+    # converting temperatures from spectral radiance to Celcius
+    if band == 10:
+        image_array = (1321.0789 / np.log((774.8853 / (3.3420E-04 * image_array + 0.10000)) + 1)) - 273.15
+    elif band == 11:
+        image_array = (1201.1442 / np.log((480.8883 / (3.3420E-04 * image_array + 0.10000)) + 1))
 
-    image_array = normalize_data(image_array)
+    # image_array = normalize_data(image_array)
 
     return ma.masked_less_equal(image_array, 0)
 

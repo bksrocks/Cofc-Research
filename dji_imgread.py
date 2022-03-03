@@ -19,12 +19,12 @@ def read_image(image_path):
 
     image = ThermalImage(image_path=image_path, camera_manufacturer="dji")
 
-    # thermal_np = image.thermal_np           # The temperature matrix as a np array
+    thermal_np = image.thermal_np           # The temperature matrix as a np array
     raw_sensor_np = image.raw_sensor_np     # The raw thermal sensor excitation values # as a np array
     meta = image.meta                     # Image metadata
 
-    return normalize_data(raw_sensor_np), meta
-
+    # return normalize_data(raw_sensor_np), meta
+    return thermal_np, meta
 
 def main():
 
