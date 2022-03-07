@@ -25,10 +25,10 @@ def compare_images(landsat, drone):
 def main():
     # Reading both images
     landsat_image = import_image("img/LC08_L1TP_016037_20211214_20211223_02_T1_B10.TIF", 10)
-    dji_image, dji_meta = read_image("img/DJI_0354.JPG")
+    dji_image, dji_meta = read_image("img/DJI_0392.JPG")
 
     # Getting GPS coordinates for dji drone image
-    imagepath = "img/DJI_0354.JPG"
+    imagepath = "img/DJI_0392.JPG"
 
     with open(imagepath, "rb") as fin:
         img = fin.read()
